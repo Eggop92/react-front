@@ -16,8 +16,6 @@ const Header = ({ name, clase, race, level }: HeaderProps) => {
             <Stack direction="row" spacing={2} sx={{ alignItems: 'center' }}>
                 <Avatar {...stringAvatar(name)} />
                 <Typography variant="h4" noWrap>{name}</Typography>
-            </Stack>
-            <Stack direction="row" spacing={2} sx={{ alignItems: 'center', justifyContent: 'flex-end' }}>
                 <ClaseChip clase={clase} level={level} />
                 <RaceChip race={race} />
             </Stack>
