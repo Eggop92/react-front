@@ -1,5 +1,5 @@
 
-import { Container, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 import './App.css'
 import Header from './componentes/Header'
 import MainContainer from './componentes/MainContainer'
@@ -7,12 +7,12 @@ import MainContainer from './componentes/MainContainer'
 function App() {
 
   return (
-    <Container>
-      <Stack width='100%'>
-        <Header name="Pepe Chulo" clase="Cleric" race="Human" level={3} />
-        <MainContainer />
-      </Stack>
-    </Container>
+    // <Container>
+    <Stack>
+      <Header name="Pepe Chulo" clase="Cleric" race="Human" level={3} />
+      <MainContainer />
+    </Stack>
+    // </Container>
 
 
   )
