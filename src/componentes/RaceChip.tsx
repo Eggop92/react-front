@@ -1,6 +1,8 @@
 import { Chip } from '@mui/material'
 import { ReactElement } from 'react'
-import { Bs1CircleFill } from 'react-icons/bs'
+import { FaCat } from 'react-icons/fa6'
+import { GiAngelOutfit, GiBadGnome, GiDwarfFace, GiElfHelmet, GiGooeyDaemon, GiOrcHead, GiSpikedDragonHead, GiWomanElfFace } from 'react-icons/gi'
+import { PiClover, PiFinnTheHuman } from 'react-icons/pi'
 
 interface RaceChipProps {
     race: string
@@ -8,17 +10,17 @@ interface RaceChipProps {
 
 const RaceChip = ({ race }: RaceChipProps) => {
     const iconMap: { [key: string]: ReactElement } = {
-        Human: <Bs1CircleFill />,
-        Elf: <Bs1CircleFill />,
-        Dwarf: <Bs1CircleFill />,
-        Halfling: <Bs1CircleFill />,
-        Dragonborn: <Bs1CircleFill />,
-        Gnome: <Bs1CircleFill />,
-        HalfElf: <Bs1CircleFill />,
-        HalfOrc: <Bs1CircleFill />,
-        Tiefling: <Bs1CircleFill />,
-        Aasimar: <Bs1CircleFill />,
-        Tabaxi: <Bs1CircleFill />
+        Human: <PiFinnTheHuman />,
+        Elf: <GiElfHelmet />,
+        Dwarf: <GiDwarfFace />,
+        Halfling: <PiClover />,
+        Dragonborn: <GiSpikedDragonHead />,
+        Gnome: <GiBadGnome />,
+        HalfElf: <GiWomanElfFace />,
+        HalfOrc: <GiOrcHead />,
+        Tiefling: <GiGooeyDaemon />,
+        Aasimar: <GiAngelOutfit />,
+        Tabaxi: <FaCat />
     }
 
     return (
