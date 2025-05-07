@@ -8,9 +8,10 @@ interface SkillGroupProps {
     direction?: 'row' | 'column-reverse';
     typographyVariant?: 'h6' | 'body2';
     icon?: ReactNode;
+    proficency?: boolean;
 }
 
-const SkillGroup = ({ name, modifier, direction, typographyVariant = 'body2', icon }: SkillGroupProps) => {
+const SkillGroup = ({ name, modifier, direction, typographyVariant = 'body2', icon, proficency = false }: SkillGroupProps) => {
     const { enqueueSnackbar } = useSnackbar();
 
     const handleClick = () => {
@@ -19,7 +20,7 @@ const SkillGroup = ({ name, modifier, direction, typographyVariant = 'body2', ic
 
     return (
         <Stack direction={direction} sx={{ alignItems: 'center' }} spacing={1}>
-            <Button variant="outlined" onClick={handleClick}> {modifier} </Button>
+            <Button variant={proficency ? "contained" : "outlined"} onClick={handleClick}> {modifier} </Button>
             <Typography variant={typographyVariant} style={{ textAlign: "left" }}> {name} </Typography>
 
         </Stack>
