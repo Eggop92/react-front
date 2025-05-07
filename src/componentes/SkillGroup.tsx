@@ -6,11 +6,11 @@ interface SkillGroupProps {
     name: string;
     modifier: number;
     direction?: 'row' | 'column-reverse';
-    typographyVariant?: 'h6' | 'body1';
+    typographyVariant?: 'h6' | 'body2';
     icon?: ReactNode;
 }
 
-const SkillGroup = ({ name, modifier, direction, typographyVariant = 'body1', icon }: SkillGroupProps) => {
+const SkillGroup = ({ name, modifier, direction, typographyVariant = 'body2', icon }: SkillGroupProps) => {
     const { enqueueSnackbar } = useSnackbar();
 
     const handleClick = () => {
@@ -18,9 +18,9 @@ const SkillGroup = ({ name, modifier, direction, typographyVariant = 'body1', ic
     };
 
     return (
-        <Stack direction={direction} sx={{ alignItems: 'center' }} spacing={2}>
+        <Stack direction={direction} sx={{ alignItems: 'center' }} spacing={1}>
             <Button variant="outlined" onClick={handleClick}> {modifier} </Button>
-            <Typography variant={typographyVariant}> {name} </Typography>
+            <Typography variant={typographyVariant} style={{ textAlign: "left" }}> {name} </Typography>
 
         </Stack>
     )
