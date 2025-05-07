@@ -1,5 +1,4 @@
 import { Grid } from "@mui/material"
-import { indigo } from "@mui/material/colors"
 import { FaHeartbeat } from "react-icons/fa"
 import { GiBiceps, GiPublicSpeaker, GiSolidLeaf, GiSpellBook, GiWalkingBoot } from "react-icons/gi"
 import SkillGroup from "./SkillGroup"
@@ -49,13 +48,13 @@ const CaracteristicsList = ({ caracteristics, proficencyBonus, proficencies }: P
     return (
         <Grid container columns={12} spacing={2} >
             {caracteristiclist.map((caracteristic) => (
-                <Grid key={caracteristic.id} size={12} direction='row' sx={{ alignItems: 'center' }} border={1} borderRadius={2} borderColor={indigo[900]} padding={2}>
+                <Grid key={caracteristic.id} size={12} direction='row' sx={{ alignItems: 'center' }} padding={1} className='border'>
                     <Grid container columns={12}>
                         <Grid size={3} sx={{ alignItems: 'center', justifyContent: "center", }}>
                             <SkillGroup name={caracteristic.name} modifier={getModifier(getCaracteristicValue(caracteristic.id))} direction='column-reverse' typographyVariant='h6' icon={caracteristic.icon} />
                         </Grid>
                         <Grid size={9}>
-                            <Grid container direction='row' spacing={1} paddingLeft={2} columns={12} sx={{ alignItems: 'center' }} >
+                            <Grid container direction='row' spacing={1} paddingLeft={1} columns={12} sx={{ alignItems: 'center' }} >
                                 {caracteristic.skills.map((skill) => (
                                     <Grid size={6} key={skill.id}>
                                         <SkillGroup name={skill.name} modifier={getSkillModifier(caracteristic.id, skill.id)} proficency={proficencies.includes(skill.id)} direction='row' icon={caracteristic.icon} />

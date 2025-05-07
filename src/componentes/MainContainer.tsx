@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material"
 import CaracteristicsList from "./CaracteristicsList"
+import CombatStats from "./CombatStats"
 
 const MainContainer = () => {
     return (
@@ -16,7 +17,7 @@ const MainContainer = () => {
                 />
             </Grid>
             <Grid sx={{ alignItems: 'center', justifyContent: "center", }} size={3}>
-                <div>Center</div>
+                <CombatStats />
             </Grid>
             <Grid sx={{ alignItems: 'center', justifyContent: "center", }} size={4}>
                 <div>Right</div>
