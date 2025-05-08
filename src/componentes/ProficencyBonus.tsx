@@ -9,7 +9,7 @@ const ProficencyBonus = ({ proficency }: ProficencyBonusProps) => {
     return (
 
         <Stack direction='column' className="border" padding={1} sx={{ alignItems: 'center' }} spacing={1}>
-            <Chip label="Proficency" color="primary" />
+            <Chip label="Proficency" color="primary" size='small' />
             <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }} >
                 <GiSkills size='1.5rem' />
                 <Typography variant="h5">{proficency}</Typography>

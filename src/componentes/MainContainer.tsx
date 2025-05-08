@@ -17,7 +17,7 @@ const MainContainer = () => {
                 />
             </Grid>
             <Grid sx={{ alignItems: 'center', justifyContent: "center", }} size={3}>
-                <CombatStats />
+                <CombatStats armorClass={15} initiativeBonus={2} proficency={2} speed={30} speedType="walking" maxHitPoints={30} />
             </Grid>
             <Grid sx={{ alignItems: 'center', justifyContent: "center", }} size={4}>
                 <div>Right</div>

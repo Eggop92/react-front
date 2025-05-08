@@ -13,8 +13,8 @@ const HitPoints = ({ maxHitPoints }: HitPointsProps) => {
     }
     return (
         <Stack direction='column' className="border" padding={1} sx={{ alignItems: 'center' }} spacing={1}>
-            <Chip label="Hit points" color="primary" />
-            <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }} >
+            <Chip label="Hit points" color="primary" size='small' />
+            <Stack direction="row" sx={{ alignItems: 'center' }} >
                 {currentHitPoints === maxHitPoints ? <TiHeartFullOutline size='1.5rem' /> : (currentHitPoints === 0 ? <TiHeartOutline size='1.5rem' /> : <TiHeartHalfOutline size='1.5rem' />)}
                 <NumberField.Root defaultValue={maxHitPoints} max={maxHitPoints} min={0} className={'number-input Field'} onValueChange={onNumberChange} >
                     <NumberField.Group className={'number-input Group'}>
