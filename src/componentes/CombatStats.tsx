@@ -1,13 +1,14 @@
 import { Stack } from "@mui/material"
+import ArmorClass from "./ArmorClass"
 import DeathSaves from "./DeathSaves"
 import Initiative from "./Initiative"
 import ProficencyBonus from "./ProficencyBonus"
 
 const CombatStats = () => {
     return (
-        <Stack>
+        <Stack spacing={2}>
             <Stack direction="row" spacing={2} sx={{ alignItems: 'center' }}>
-                <div>Armor Class</div>
+                <ArmorClass armorClass={15} />
                 <div>Hit Points</div>
                 <div>Speed</div>
             </Stack>
