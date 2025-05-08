@@ -4,6 +4,7 @@ import DeathSaves from "./DeathSaves"
 import HitPoints from "./HitPoints"
 import Initiative from "./Initiative"
 import ProficencyBonus from "./ProficencyBonus"
+import Speed from "./Speed"
 
 const CombatStats = () => {
     return (
@@ -11,7 +12,7 @@ const CombatStats = () => {
             <Stack direction="row" spacing={2} sx={{ alignItems: 'center' }}>
                 <ArmorClass armorClass={15} />
                 <HitPoints maxHitPoints={20} />
-                <div>Speed</div>
+                <Speed speed={30} speedType="walking" />
             </Stack>
             <Stack direction="row" spacing={2} sx={{ alignItems: 'flex-start' }}>
                 <Initiative initiativeBonus={1} />

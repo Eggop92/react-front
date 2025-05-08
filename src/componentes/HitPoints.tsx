@@ -27,8 +27,6 @@ const HitPoints = ({ maxHitPoints }: HitPointsProps) => {
                         </NumberField.Increment>
                     </NumberField.Group>
                 </NumberField.Root>
-                {/* <TbBackslash />
-                <Typography variant="h5">{maxHitPoints}</Typography> */}
             </Stack>
         </Stack>
     )
