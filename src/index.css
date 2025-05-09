@@ -82,6 +82,8 @@ button:focus-visible {
 }
 
 .number-input {
+  justify-content: center;
+
   .Field {
     display: flex;
     flex-direction: column;

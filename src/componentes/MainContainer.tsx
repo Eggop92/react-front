@@ -1,6 +1,7 @@
-import { Grid } from "@mui/material"
+import { Grid, Stack } from "@mui/material"
 import CaracteristicsList from "./CaracteristicsList"
 import CombatStats from "./CombatStats"
+import Money from "./Money"
 
 const MainContainer = () => {
     return (
@@ -17,7 +18,10 @@ const MainContainer = () => {
                 />
             </Grid>
             <Grid sx={{ alignItems: 'center', justifyContent: "center", }} size={3}>
-                <CombatStats armorClass={15} initiativeBonus={2} proficency={2} speed={30} speedType="walking" maxHitPoints={30} />
+                <Stack spacing={1}>
+                    <CombatStats armorClass={15} initiativeBonus={2} proficency={2} speed={30} speedType="walking" maxHitPoints={30} />
+                    <Money gold={30} silver={10} bronze={0} />
+                </Stack>
             </Grid>
             <Grid sx={{ alignItems: 'center', justifyContent: "center", }} size={4}>
                 <div>Right</div>
