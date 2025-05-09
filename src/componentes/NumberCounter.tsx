@@ -5,11 +5,11 @@ interface NumberCounterProps {
     defaultValue: number;
     max: number;
     min: number;
-    onValueChange: (num: number) => void;
+    onValueChange?: (num: number) => void;
 }
 const NumberCounter = ({ defaultValue, max, min, onValueChange }: NumberCounterProps) => {
     return (
-        <NumberField.Root defaultValue={defaultValue} max={max} min={min} className={'number-input Field'} onValueChange={(number) => onValueChange(number ? number : 0)} >
+        <NumberField.Root defaultValue={defaultValue} max={max} min={min} className={'number-input Field'} onValueChange={(number) => { if (onValueChange) { onValueChange(number ? number : 0) } }} >
             <NumberField.Group className={'number-input Group'}>
                 <NumberField.Decrement className={'number-input Decrement'}>
                     <TiMinus />

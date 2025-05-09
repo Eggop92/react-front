@@ -13,7 +13,7 @@ const Coin = ({ name, ammount, color }: CoinProps) => {
         <Stack sx={{ alignItems: 'center' }} spacing={0}>
             <Tooltip title={name} placement="top" arrow>
                 <GiCoins color={color} size='1.5rem' />
-            </Tooltip><NumberCounter defaultValue={ammount} max={10000} min={0} onValueChange={(num) => { }} />
+            </Tooltip><NumberCounter defaultValue={ammount} max={10000} min={0} />
         </Stack>
     )
 }
