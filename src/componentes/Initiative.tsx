@@ -1,5 +1,4 @@
-import { Button, Chip } from "@mui/material"
-import Stack from "@mui/material/Stack"
+import { Button } from "@mui/material"
 import { useSnackbar } from "notistack"
 import { TbSortDescending2Filled } from "react-icons/tb"
 
@@ -15,12 +14,10 @@ const Initiative = ({ initiativeBonus }: InitiativeProps) => {
     };
 
     return (
-        <Stack className="border" padding={1} spacing={2}>
-            <Chip label="Iniciativa" color="primary" size='small' />
-            <Button variant="outlined" color="primary" size="large" sx={{ width: '100%' }} onClick={handleClick}>
-                <TbSortDescending2Filled /> {initiativeBonus}
-            </Button>
-        </Stack>
+        <Button variant="outlined" color="primary" size="large" sx={{ width: '100%' }} onClick={handleClick}>
+            <TbSortDescending2Filled /> {initiativeBonus}
+        </Button>
+
     )
 }
 

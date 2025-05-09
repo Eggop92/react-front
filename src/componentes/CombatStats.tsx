@@ -5,6 +5,7 @@ import HitPoints from "./HitPoints"
 import Initiative from "./Initiative"
 import ProficencyBonus from "./ProficencyBonus"
 import Speed from "./Speed"
+import StatBox from "./StatBox"
 
 interface CombatStatsProps {
     armorClass: number
@@ -18,12 +19,12 @@ interface CombatStatsProps {
 const CombatStats = ({ armorClass, maxHitPoints, speed, speedType, initiativeBonus, proficency }: CombatStatsProps) => {
     return (
         <Grid container columns={10} spacing={1}>
-            <Grid size={3}><ArmorClass armorClass={armorClass} /></Grid>
-            <Grid size={3}><ProficencyBonus proficency={proficency} /></Grid>
-            <Grid size={3}><Speed speed={speed} speedType={speedType} /></Grid>
-            <Grid size={4}><Initiative initiativeBonus={initiativeBonus} /></Grid>
-            <Grid size={5}><HitPoints maxHitPoints={maxHitPoints} /></Grid>
-            <Grid size={5}><DeathSaves /></Grid>
+            <Grid size={3}><StatBox title='Armour'><ArmorClass armorClass={armorClass} /></StatBox></Grid>
+            <Grid size={4}><StatBox title='Proficency'><ProficencyBonus proficency={proficency} /></StatBox></Grid>
+            <Grid size={3}><StatBox title='Speed'><Speed speed={speed} speedType={speedType} /></StatBox></Grid>
+            <Grid size={3}><StatBox title='Initiative'><Initiative initiativeBonus={initiativeBonus} /></StatBox></Grid>
+            <Grid size={3}><StatBox title='HP'><HitPoints maxHitPoints={maxHitPoints} /></StatBox></Grid>
+            <Grid size={4}><StatBox title='Death saves'><DeathSaves /></StatBox></Grid>
         </Grid>
     )
 }

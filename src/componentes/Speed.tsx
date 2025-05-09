@@ -1,4 +1,4 @@
-import { Chip, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { GiFeatheredWing, GiWalkingBoot } from "react-icons/gi";
 import { TbSwimming } from "react-icons/tb";
 
@@ -21,12 +21,9 @@ const Speed = ({ speed, speedType }: SpeedProps) => {
         }
     };
     return (
-        <Stack direction='column' className="border" padding={1} sx={{ alignItems: 'center' }} spacing={1}>
-            <Chip label="Speed" color="primary" size='small' />
-            <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }} >
-                {getSpeedIcon()}
-                <Typography variant="h5">{speed}</Typography>
-            </Stack>
+        <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }} >
+            {getSpeedIcon()}
+            <Typography variant="h5">{speed}</Typography>
         </Stack>
     )
 }
