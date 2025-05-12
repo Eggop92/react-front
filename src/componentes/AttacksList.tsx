@@ -1,6 +1,7 @@
 import { List } from "@mui/material";
 import { Attack } from "../interfaces/Attack";
 import AttackBox from "./AttackBox";
+import BorderBox from "./BorderBox";
 
 interface AttackListProps {
   list: Attack[];
@@ -16,11 +17,13 @@ const AtacksList = ({ list }: AttackListProps) => {
   // typeDamage:
 
   return (
-    <List className="border">
-      {list.map((attack, index) => (
-        <AttackBox key={index} name={attack.name} attackModifier={attack.attackModifier} damageModifier={attack.damageModifier} numberDiceDamage={attack.numberDiceDamage} typeDiceDamage={attack.typeDiceDamage} typeDamage={attack.typeDamage} />
-      ))}
-    </List>
+    <BorderBox title="Ataques">
+      <List className="border">
+        {list.map((attack, index) => (
+          <AttackBox key={index} name={attack.name} attackModifier={attack.attackModifier} damageModifier={attack.damageModifier} numberDiceDamage={attack.numberDiceDamage} typeDiceDamage={attack.typeDiceDamage} typeDamage={attack.typeDamage} />
+        ))}
+      </List>
+    </BorderBox>
   )
 }
 

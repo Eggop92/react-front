@@ -14,8 +14,8 @@ const Initiative = ({ initiativeBonus }: InitiativeProps) => {
     };
 
     return (
-        <Button variant="outlined" color="primary" size="large" sx={{ width: '100%' }} onClick={handleClick}>
-            <TbSortDescending2Filled /> {initiativeBonus}
+        <Button variant="outlined" color="primary" sx={{ width: '100%' }} onClick={handleClick} startIcon={<TbSortDescending2Filled />}>
+            {initiativeBonus}
         </Button>
 
     )

@@ -29,7 +29,6 @@ const MainContainer = () => {
                 <Stack spacing={1}>
                     <CombatStats armorClass={15} initiativeBonus={2} proficency={2} speed={30} speedType="walking" maxHitPoints={30} />
                     <Money gold={30} silver={10} bronze={0} />
-
                 </Stack>
             </Grid>
             <Grid sx={{ alignItems: 'center', justifyContent: "center", }} size={4}>
