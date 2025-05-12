@@ -5,15 +5,24 @@ import { forwardRef, ReactNode } from "react";
 interface SkillCheckSnackbarProps extends CustomContentProps {
     modifier: number;
     skill: string;
-    icon: ReactNode
+    icon: ReactNode;
+    dice: number;
+    ammount: number;
 }
 
-const SkillCheckSnackbar = forwardRef<HTMLDivElement, SkillCheckSnackbarProps>(({ id, ...props }, ref) => {
-    const roll = Math.floor(Math.random() * 20) + 1;
-    const sign = props.modifier >= 0 ? "+" : "";
-    const total = roll + props.modifier;
-    const bgColor = roll === 20 ? "success.main" : roll === 1 ? "error.main" : "primary.main";
-    const hoverColor = roll === 20 ? "success.dark" : roll === 1 ? "error.dark" : "primary.dark";
+const SkillCheckSnackbar = forwardRef<HTMLDivElement, SkillCheckSnackbarProps>(({ id, modifier, skill, icon, dice = 20, ammount = 1 }, ref) => {
+    const rolls: number[] = [];
+    let totalRolls = 0;
+    [...Array(ammount).keys()].forEach(() => {
+        let r = Math.floor(Math.random() * dice) + 1;
+        rolls.push(r);
+        totalRolls += r;
+    });
+
+    const sign = modifier >= 0 ? "+" : "";
+    const total = totalRolls + modifier;
+    const bgColor = ammount === 1 ? rolls[0] === 20 ? "success.main" : rolls[0] === 1 ? "error.main" : "primary.main" : "primary.main";
+    const hoverColor = ammount === 1 ? rolls[0] === 20 ? "success.dark" : rolls[0] === 1 ? "error.dark" : "primary.dark" : "primary.dark";
     return (
         <SnackbarContent ref={ref}>
             <Box
@@ -29,8 +38,8 @@ const SkillCheckSnackbar = forwardRef<HTMLDivElement, SkillCheckSnackbarProps>((
                 }}
             >
                 <Stack direction='row' spacing={1} sx={{ alignItems: 'center' }}>
-                    {props.icon}
-                    <Typography>You roled a {roll} {sign}{props.modifier} = <b>{total}</b> for <b>{props.skill}</b> check</Typography>
+                    {icon}
+                    <Typography>You roled {ammount > 1 ? rolls.reduce((prev, current) => { return prev + ' + ' + current; }, '') : rolls[0]} {sign}{modifier} = <b>{total}</b> for <b>{skill}</b></Typography>
                 </Stack>
             </Box>
         </SnackbarContent>
