@@ -11,7 +11,7 @@ const MainContainer = () => {
     const attackList: Attack[] = [
         { name: 'Hacha', attackModifier: 3, damageModifier: 1, numberDiceDamage: 1, typeDiceDamage: 12, typeDamage: "slashing" },
         { name: 'Mandoble', attackModifier: 5, damageModifier: 2, numberDiceDamage: 2, typeDiceDamage: 6, typeDamage: "slashing" },
-        { name: 'Daga', attackModifier: 1, damageModifier: 1, numberDiceDamage: 1, typeDiceDamage: 4, typeDamage: "piercing" }
+        { name: 'Daga', attackModifier: 1, damageModifier: -1, numberDiceDamage: 1, typeDiceDamage: 4, typeDamage: "piercing" }
     ];
     const magicLevels: MagicLevel[] = [
         {

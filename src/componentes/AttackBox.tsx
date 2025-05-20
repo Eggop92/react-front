@@ -68,7 +68,7 @@ const AttackBox = ({ attack }: AttackBoxProps) => {
     };
     const getDamageButton = (): ReactNode => {
         return (<Button variant="outlined" color="primary" onClick={handleDamageClick} startIcon={getDamageIcon()}>
-            {attack.numberDiceDamage}d{attack.typeDiceDamage} {attack.damageModifier >= 0 ? '+' : ''} {attack.damageModifier}
+            {attack.numberDiceDamage}d{attack.typeDiceDamage} {attack.damageModifier != 0 ? (attack.damageModifier >= 0 ? '+' : '') + attack.damageModifier : ''}
         </Button>);
     }
     const getTitle = (): ReactNode => {
