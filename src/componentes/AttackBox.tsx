@@ -1,4 +1,4 @@
-import { Button, ListItem, ListItemIcon, Stack, Typography } from "@mui/material";
+import { Button, ListItem, ListItemIcon, Stack, Tooltip, Typography } from "@mui/material";
 import { useSnackbar } from "notistack";
 import { ReactNode } from "react";
 import { AiOutlineThunderbolt } from "react-icons/ai";
@@ -71,6 +71,14 @@ const AttackBox = ({ attack }: AttackBoxProps) => {
             {attack.numberDiceDamage}d{attack.typeDiceDamage} {attack.damageModifier >= 0 ? '+' : ''} {attack.damageModifier}
         </Button>);
     }
+    const getTitle = (): ReactNode => {
+        if (attack.description === undefined) return <Typography variant="body1" color="text.secondary">{attack.name}</Typography>;
+        return (
+            <Tooltip title={attack.description} arrow>
+                <Typography variant="body1" color="text.secondary">{attack.name}</Typography>
+            </Tooltip>
+        );
+    }
 
     return (
         <ListItem >
@@ -78,7 +86,7 @@ const AttackBox = ({ attack }: AttackBoxProps) => {
                 {getDamageIcon()}
             </ListItemIcon>
             <Stack direction={"row"} sx={{ width: "100%", justifyContent: "space-between", alignItems: "center" }}>
-                <Typography variant="body1" color="text.secondary">{attack.name}</Typography>
+                {getTitle()}
                 <Stack direction='row' spacing={1} sx={{ justifyContent: "flex-end", alignItems: "center" }}>
                     {getAttackButton()}
                     {getSavingButton()}

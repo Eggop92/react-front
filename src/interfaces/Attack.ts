@@ -7,4 +7,5 @@ export interface Attack {
     typeDamage: 'slashing' | 'piercing' | 'bludgeoning' | 'fire' | 'cold' | 'lightning' | 'thunder' | 'poison' | 'necrotic' | 'radiant' | 'psychic' | 'force' | 'acid';
     savingThrow?: number;
     savingThrowType?: 'STR' | 'DEX' | 'CON' | 'INT' | 'WIS' | 'CHA';
+    description?: string;
 }
