@@ -5,10 +5,13 @@ import { AiOutlineThunderbolt } from "react-icons/ai";
 import { GiArrowhead, GiBrainstorm, GiChemicalBolt, GiCrossedSlashes, GiDivert, GiDrippingKnife, GiFireTail, GiIceSpear, GiLightningBranches, GiPointySword, GiSkullCrack, GiThorHammer, GiWingedSword } from "react-icons/gi";
 import { Attack } from "../interfaces/Attack";
 
+interface AttackBoxProps {
+    attack: Attack;
+}
 
-const AttackBox = ({ name, attackModifier, damageModifier, numberDiceDamage, typeDiceDamage, typeDamage }: Attack) => {
+const AttackBox = ({ attack }: AttackBoxProps) => {
     const getDamageIcon = (): ReactNode => {
-        switch (typeDamage) {
+        switch (attack.typeDamage) {
             case 'slashing':
                 return <GiCrossedSlashes />;
             case 'piercing':
@@ -42,28 +45,47 @@ const AttackBox = ({ name, attackModifier, damageModifier, numberDiceDamage, typ
 
     const { enqueueSnackbar } = useSnackbar();
     const handleAttackClick = () => {
-        enqueueSnackbar({ variant: 'skillCheckSnackbar', modifier: attackModifier, skill: "Attack", icon: <GiPointySword /> });
+        enqueueSnackbar({ variant: 'skillCheckSnackbar', modifier: attack.attackModifier, skill: "Attack", icon: <GiPointySword /> });
     };
     const handleDamageClick = () => {
-        enqueueSnackbar({ variant: 'skillCheckSnackbar', modifier: damageModifier, skill: typeDamage + " damage", icon: getDamageIcon(), dice: typeDiceDamage, ammount: numberDiceDamage });
+        enqueueSnackbar({ variant: 'skillCheckSnackbar', modifier: attack.damageModifier, skill: attack.typeDamage + " damage", icon: getDamageIcon(), dice: attack.typeDiceDamage, ammount: attack.numberDiceDamage });
     };
+    const getAttackButton = (): ReactNode => {
+        if (attack.attackModifier === undefined) return null;
+        return (
+            <Button variant="outlined" color="primary" onClick={handleAttackClick} startIcon={<GiPointySword />}>
+                {attack.attackModifier >= 0 ? '+' : ''}{attack.attackModifier}
+            </Button>
+        )
+    };
+    const getSavingButton = (): ReactNode => {
+        if (attack.savingThrow === undefined) return null;
+        return (
+            <Button variant="text" color="primary" disabled>
+                {attack.savingThrowType} {attack.savingThrow}
+            </Button>
+        )
+    };
+    const getDamageButton = (): ReactNode => {
+        return (<Button variant="outlined" color="primary" onClick={handleDamageClick} startIcon={getDamageIcon()}>
+            {attack.numberDiceDamage}d{attack.typeDiceDamage} {attack.damageModifier >= 0 ? '+' : ''} {attack.damageModifier}
+        </Button>);
+    }
+
     return (
-        <ListItem secondaryAction={
-            <Stack direction='row' spacing={1}>
-                <Button variant="outlined" color="primary" onClick={handleAttackClick} startIcon={<GiPointySword />}>
-                    {attackModifier >= 0 ? '+' : ''}{attackModifier}
-                </Button>
-                <Button variant="outlined" color="primary" onClick={handleDamageClick} startIcon={getDamageIcon()}>
-                    {numberDiceDamage}d{typeDiceDamage} {damageModifier >= 0 ? '+' : ''} {damageModifier}
-                </Button>
-            </Stack>
-        }>
+        <ListItem >
             <ListItemIcon>
                 {getDamageIcon()}
             </ListItemIcon>
             <ListItemText
-                primary={name}
-            // secondary={secondary ? 'Secondary text' : null}
+                primary={attack.name}
+                secondary={
+                    <Stack direction='row' spacing={1} sx={{ justifyContent: "flex-end", alignItems: "center" }}>
+                        {getAttackButton()}
+                        {getSavingButton()}
+                        {getDamageButton()}
+                    </Stack>
+                }
             />
         </ListItem>
     )

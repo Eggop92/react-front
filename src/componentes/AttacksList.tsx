@@ -20,7 +20,7 @@ const AtacksList = ({ list }: AttackListProps) => {
     <BorderBox title="Ataques">
       <List className="border">
         {list.map((attack, index) => (
-          <AttackBox key={index} name={attack.name} attackModifier={attack.attackModifier} damageModifier={attack.damageModifier} numberDiceDamage={attack.numberDiceDamage} typeDiceDamage={attack.typeDiceDamage} typeDamage={attack.typeDamage} />
+          <AttackBox key={index} attack={attack} />
         ))}
       </List>
     </BorderBox>
