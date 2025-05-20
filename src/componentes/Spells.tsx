@@ -1,4 +1,4 @@
-import { Checkbox, List, Stack, Typography } from "@mui/material";
+import { Checkbox, List, Stack } from "@mui/material";
 import { purple, red } from "@mui/material/colors";
 import { GiCrossMark, GiStarSwirl } from "react-icons/gi";
 import { Attack } from "../interfaces/Attack";
@@ -13,13 +13,10 @@ interface SpellsProps {
 const Spells = ({ level, quantity, spells }: SpellsProps) => {
     return (
         <>
-            <Stack direction='row' sx={{ justifyContent: "space-between", alignItems: "center" }}>
-                <Typography>{level}</Typography>
-                <div>
-                    {[...Array(quantity).keys()].map((_, index) => (
-                        <Checkbox key={index} icon={<GiStarSwirl color={purple[500]} />} checkedIcon={<GiCrossMark color={red[900]} />} />
-                    ))}
-                </div>
+            <Stack direction='row' sx={{ justifyContent: "flex-end", alignItems: "center" }}>
+                {[...Array(quantity).keys()].map((_, index) => (
+                    <Checkbox key={index} size={"large"} icon={<GiStarSwirl color={purple[500]} />} checkedIcon={<GiCrossMark color={red[900]} />} />
+                ))}
             </Stack>
             <List sx={{ padding: 0 }}>
                 {spells?.map((attack, index) => (
