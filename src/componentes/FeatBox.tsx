@@ -1,6 +1,7 @@
 import { Checkbox, ListItem, ListItemIcon, Stack, Tooltip, Typography } from "@mui/material";
 import { red } from "@mui/material/colors";
-import { GiBearFace, GiCrossMark } from "react-icons/gi";
+import { FaRegCompass } from "react-icons/fa";
+import { GiBeamsAura, GiBearFace, GiCrossMark, GiFlatStar, GiFlexibleStar } from "react-icons/gi";
 import { Feat } from "../interfaces/Feat";
 
 interface FeatBoxProps {
@@ -10,10 +11,10 @@ interface FeatBoxProps {
 const FeatBox = ({ feat }: FeatBoxProps) => {
     const getIcon = () => {
         switch (feat.type) {
-            case 'race': return <GiBearFace color={"#8B4513"} />; // Brown
-            case 'class': return <GiBearFace color={"#4682B4"} />; // Steel Blue
-            case 'subclass': return <GiBearFace color={"#4682B4"} />; // Steel Blue
-            case 'background': return <GiBearFace color={"#228B22"} />; // Forest Green
+            case 'race': return <GiBeamsAura />; // Brown
+            case 'class': return <GiFlatStar />; // Steel Blue
+            case 'subclass': return <GiFlexibleStar />; // Steel Blue
+            case 'background': return <FaRegCompass />; // Forest Green
             case 'general': return <GiBearFace color={"#FFD700"} />; // Gold
         }
     };

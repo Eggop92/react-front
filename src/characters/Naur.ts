@@ -98,9 +98,9 @@ export const naur: Character = {
         { level: 1, type: 'class', name: 'Lanzamiento de conjuros', description: 'Basándose en la esencia divina de la naturaleza misma, puedes lanzar conjuros para dar a dicha esencia la forma que desees.' },
         { level: 2, type: 'class', name: 'Forma salvaje', quantity: 2, description: 'Puedes utilizar tu acción para asumir mágicamente la forma de una bestia que has visto antes. Puede utilizar esta habilidad dos veces. Recuperas los usos gastados cuando terminas un descanso corto o largo. Tu nivel de druida determina en qué bestias puedes transformarte, como se muestra en la tabla Formas Salvajes.' },
         { level: 3, type: 'class', name: 'Circulo druidico', description: 'Eliges identificarte con un círculo druídico' },
-        { level: 3, type: 'class', name: 'Invocar espíritu del fuego salvaje', description: '' },
+        { level: 3, type: 'subclass', name: 'Invocar espíritu del fuego salvaje', description: '' },
         { level: 4, type: 'class', name: 'Feat: Versado en el fuego', description: '' },
-        { level: 6, type: 'class', name: 'Circulo druidico: Vinculo mejorado', description: '' },
+        { level: 6, type: 'subclass', name: 'Circulo druidico: Vinculo mejorado', description: '' },
         { level: 8, type: 'class', name: 'Feat: Conjurador de guerra', description: '' },
     ],
 }
