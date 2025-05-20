@@ -30,13 +30,13 @@ const Magic = ({ caracteristic, attack, saving, levels }: MagicProps) => {
                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                         <Tabs value={value} onChange={handleChange} aria-label="basic tabs spells">
                             {levels.map((level) => (
-                                <Tab label={level.name} id={`spell-tab-${level.name}`} aria-controls={`spell-tabpanel-${level.name}`} />
+                                <Tab key={level.name} label={level.name} id={`spell-tab-${level.name}`} aria-controls={`spell-tabpanel-${level.name}`} />
                             ))}
                         </Tabs>
                     </Box>
                     {levels.map((level, index) => (
-                        <SpellTabPanel value={value} index={index}>
-                            <Spells key={index} level={level.name} quantity={level.slots} spells={level.spells} />
+                        <SpellTabPanel key={level.name} value={value} index={index}>
+                            <Spells quantity={level.slots} spells={level.spells} />
                         </SpellTabPanel>
                     ))}
                 </Box>

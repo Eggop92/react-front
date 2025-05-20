@@ -1,4 +1,4 @@
-import { Button, ListItem, ListItemIcon, ListItemText, Stack } from "@mui/material";
+import { Button, ListItem, ListItemIcon, Stack, Typography } from "@mui/material";
 import { useSnackbar } from "notistack";
 import { ReactNode } from "react";
 import { AiOutlineThunderbolt } from "react-icons/ai";
@@ -77,16 +77,14 @@ const AttackBox = ({ attack }: AttackBoxProps) => {
             <ListItemIcon>
                 {getDamageIcon()}
             </ListItemIcon>
-            <ListItemText
-                primary={attack.name}
-                secondary={
-                    <Stack direction='row' spacing={1} sx={{ justifyContent: "flex-end", alignItems: "center" }}>
-                        {getAttackButton()}
-                        {getSavingButton()}
-                        {getDamageButton()}
-                    </Stack>
-                }
-            />
+            <Stack direction={"row"} sx={{ width: "100%", justifyContent: "space-between", alignItems: "center" }}>
+                <Typography variant="body1" color="text.secondary">{attack.name}</Typography>
+                <Stack direction='row' spacing={1} sx={{ justifyContent: "flex-end", alignItems: "center" }}>
+                    {getAttackButton()}
+                    {getSavingButton()}
+                    {getDamageButton()}
+                </Stack>
+            </Stack>
         </ListItem>
     )
 }

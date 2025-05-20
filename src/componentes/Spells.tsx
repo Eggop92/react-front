@@ -5,12 +5,11 @@ import { Attack } from "../interfaces/Attack";
 import AttackBox from "./AttackBox";
 
 interface SpellsProps {
-    level: string;
     quantity: number;
     spells?: Attack[];
 }
 
-const Spells = ({ level, quantity, spells }: SpellsProps) => {
+const Spells = ({ quantity, spells }: SpellsProps) => {
     return (
         <>
             <Stack direction='row' sx={{ justifyContent: "flex-end", alignItems: "center" }}>
