@@ -1,9 +1,11 @@
 import { Grid, Stack } from "@mui/material"
 import { Attack } from "../interfaces/Attack"
+import { Feat } from "../interfaces/Feat"
 import { MagicLevel } from "../interfaces/MagicLevel"
 import AtacksList from "./AttacksList"
 import CaracteristicsList from "./CaracteristicsList"
 import CombatStats from "./CombatStats"
+import FeatList from "./FeatList"
 import Magic from "./Magic"
 import Money from "./Money"
 
@@ -32,6 +34,14 @@ const MainContainer = () => {
             ]
         },
     ];
+    const feats: Feat[] = [
+        { level: 1, type: 'class', name: 'Lanzamiento de Conjuros', description: 'Como conductor de poder divino, eres capaz de lanzar conjuros de clérigo.' },
+        { level: 1, type: 'class', name: 'Dominio Divino', description: '' },
+        { level: 2, type: 'class', name: 'Canalizar Divinidad: Expulsar Muertos Vivientes', description: 'Como una acción, muestras tu símbolo sagrado y entonas una plegaria negando a los muertos vivientes. Cada muerto viviente que pueda verte u oírte en un radio de 30 pies (9 metros) debe realizar una tirada de salvación de Sabiduría. Si la criatura falla la tirada de salvación, se encuentra expulsada durante 1 minuto o hasta que reciba cualquier daño. Una criatura expulsada debe emplear sus turnos intentando moverse tan lejos de ti como sea capaz, y no puede acercarse voluntariamente a una distancia de 30 pies (9 metros) de ti. Tampoco puede realizar reacciones. Como acción, solo puede usar la acción de Carrera o intentar escapar de un efecto que le impida moverse. Si no hay ningún lugar para moverse, la criatura puede usar la acción de Esquivar.' },
+        { level: 1, type: 'background', name: 'Rasgo: Vagabundo', description: 'Tienes una excelente memoria para los mapas y la geografía y siempre puedes recordar la disposición general del terreno, los asentamientos y otras circunstancias de entorno que te rodea. Además, puedes encontrar comida y agua fresca para ti y para otras cinco personas cada día, siempre y cuando la tierra tenga bayas, algo de caza menor, agua y cosas por el estilo.' },
+        { level: 1, type: 'race', name: 'Sentidos Agudos', description: 'Eres competente con la habilidad de Percepción.' },
+        { level: 1, name: "Visión en la Oscuridad", description: "Acostumbrados a los bosques iluminados por el crepúsculo y el cielo nocturno, tienen una visión superior en la oscuridad y la luz tenue. Puedes ver en luz tenue hasta los 60 pies (18 m.) como si fuera a plena luz, y en la oscuridad como si fuera en luz tenue. No puedes distinguir colores en la oscuridad, sólo tonos de gris.", type: 'race' }
+    ];
     return (
         <Grid container direction='row' spacing={2} sx={{ justifyContent: 'space-between' }} columns={12}>
             <Grid sx={{ alignItems: 'center', justifyContent: "center", }} size={5}>
@@ -54,7 +64,7 @@ const MainContainer = () => {
                 </Stack>
             </Grid>
             <Grid sx={{ alignItems: 'center', justifyContent: "center", }} size={3}>
-
+                <FeatList feats={feats} />
             </Grid>
         </Grid>
     )
