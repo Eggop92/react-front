@@ -12,6 +12,7 @@ const FeatBox = ({ feat }: FeatBoxProps) => {
         switch (feat.type) {
             case 'race': return <GiBearFace color={"#8B4513"} />; // Brown
             case 'class': return <GiBearFace color={"#4682B4"} />; // Steel Blue
+            case 'subclass': return <GiBearFace color={"#4682B4"} />; // Steel Blue
             case 'background': return <GiBearFace color={"#228B22"} />; // Forest Green
             case 'general': return <GiBearFace color={"#FFD700"} />; // Gold
         }

@@ -15,7 +15,7 @@ const AtacksList = ({ list }: AttackListProps) => {
   // numberDiceDamage: number;
   // typeDiceDamage: 4 | 6 | 8 | 10 | 12 | 20;
   // typeDamage:
-
+  if (list.length === 0) return null;
   return (
     <BorderBox title="Ataques">
       <List className="border">
