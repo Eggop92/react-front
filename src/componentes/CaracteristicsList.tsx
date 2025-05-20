@@ -1,13 +1,11 @@
 import { Grid } from "@mui/material"
 import { FaHeartbeat } from "react-icons/fa"
 import { GiBiceps, GiPublicSpeaker, GiSolidLeaf, GiSpellBook, GiWalkingBoot } from "react-icons/gi"
+import { Caracteristic } from "../interfaces/Caracteristic"
 import BorderBox from "./BorderBox"
 import SkillGroup from "./SkillGroup"
 
-interface Caracteristic {
-    id: number,
-    value: number
-}
+
 interface Props {
     caracteristics: Caracteristic[],
     proficencyBonus: number,
@@ -20,7 +18,7 @@ const CaracteristicsList = ({ caracteristics, proficencyBonus, proficencies }: P
         { id: 2, name: 'Destreza', skills: [{ id: 3, name: 'Salvación' }, { id: 4, name: 'Acrobacias' }, { id: 5, name: 'Sigilo' }, { id: 6, name: 'Juego de manos' }], icon: <GiWalkingBoot /> },
         { id: 3, name: 'Constitución', skills: [{ id: 7, name: 'Salvación' }], icon: <FaHeartbeat /> },
         { id: 4, name: 'Inteligencia', skills: [{ id: 8, name: 'Salvación' }, { id: 9, name: 'Arcana' }, { id: 10, name: 'Historia' }, { id: 11, name: 'Investigación' }, { id: 12, name: 'Naturaleza' }, { id: 13, name: 'Religión' }], icon: <GiSpellBook /> },
-        { id: 5, name: 'Sabiduría', skills: [{ id: 14, name: 'Salvación' }, { id: 15, name: 'Percepción' }, { id: 16, name: 'Supervivencia' }, { id: 17, name: 'Medicina' }, { id: 18, name: 'Perspicacia' }, { id: 19, name: 'Intuición' }], icon: <GiSolidLeaf /> },
+        { id: 5, name: 'Sabiduría', skills: [{ id: 14, name: 'Salvación' }, { id: 15, name: 'Percepción' }, { id: 16, name: 'Supervivencia' }, { id: 17, name: 'Medicina' }, { id: 18, name: 'Perspicacia' }, { id: 19, name: 'Trato animal' }], icon: <GiSolidLeaf /> },
         { id: 6, name: 'Carisma', skills: [{ id: 20, name: 'Salvación' }, { id: 21, name: 'Engañar' }, { id: 22, name: 'Intimidación' }, { id: 23, name: 'Actuación' }, { id: 24, name: 'Persuasión' }], icon: <GiPublicSpeaker /> },
     ];
 

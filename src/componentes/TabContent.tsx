@@ -1,15 +1,12 @@
 import { Box } from '@mui/material';
 import React from 'react';
-
 interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
     value: number;
 }
-
-const SpellTabPanel = (props: TabPanelProps) => {
+const TabContent = (props: TabPanelProps) => {
     const { children, value, index, ...other } = props;
-
     return (
         <div
             role="tabpanel"
@@ -23,4 +20,4 @@ const SpellTabPanel = (props: TabPanelProps) => {
     );
 }
 
-export default SpellTabPanel
+export default TabContent

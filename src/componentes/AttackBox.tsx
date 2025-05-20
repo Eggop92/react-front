@@ -2,7 +2,7 @@ import { Button, ListItem, ListItemIcon, Stack, Tooltip, Typography } from "@mui
 import { useSnackbar } from "notistack";
 import { ReactNode } from "react";
 import { AiOutlineThunderbolt } from "react-icons/ai";
-import { GiArrowhead, GiBrainstorm, GiChemicalBolt, GiCrossedSlashes, GiDivert, GiDrippingKnife, GiFireTail, GiIceSpear, GiLightningBranches, GiPointySword, GiSkullCrack, GiThorHammer, GiWingedSword } from "react-icons/gi";
+import { GiArrowhead, GiBrainstorm, GiChemicalBolt, GiCrossedSlashes, GiDivert, GiDrippingKnife, GiFireTail, GiHealing, GiIceSpear, GiLightningBranches, GiPointySword, GiSkullCrack, GiThorHammer, GiWingedSword } from "react-icons/gi";
 import { Attack } from "../interfaces/Attack";
 
 interface AttackBoxProps {
@@ -38,6 +38,8 @@ const AttackBox = ({ attack }: AttackBoxProps) => {
                 return <GiDivert />;
             case 'acid':
                 return <GiChemicalBolt />;
+            case 'healing':
+                return <GiHealing />;
             default:
                 return <GiCrossedSlashes />;
         }
@@ -67,6 +69,7 @@ const AttackBox = ({ attack }: AttackBoxProps) => {
         )
     };
     const getDamageButton = (): ReactNode => {
+        if (attack.numberDiceDamage === undefined || attack.typeDiceDamage === undefined) return null;
         return (<Button variant="outlined" color="primary" onClick={handleDamageClick} startIcon={getDamageIcon()}>
             {attack.numberDiceDamage}d{attack.typeDiceDamage} {attack.damageModifier != 0 ? (attack.damageModifier >= 0 ? '+' : '') + attack.damageModifier : ''}
         </Button>);

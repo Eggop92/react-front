@@ -1,20 +1,30 @@
 
-import { Stack } from '@mui/material'
-import './App.css'
-import Header from './componentes/Header'
-import MainContainer from './componentes/MainContainer'
+import { Box, Tab, Tabs } from '@mui/material';
+import React, { useState } from 'react';
+import './App.css';
+import { naur } from './characters/Naur';
+import CharacterSheet from './componentes/CharacterSheet';
+import TabContent from './componentes/TabContent';
 
 function App() {
+  const [value, setValue] = useState(0);
 
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
   return (
-    // <Container>
-    <Stack>
-      <Header name="Pepe Chulo" clase="Cleric" race="Human" level={3} />
-      <MainContainer />
-    </Stack>
-    // </Container>
-
-
+    <>
+      <Box sx={{ width: '100%' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs value={value} onChange={handleChange} aria-label="basic tabs characters">
+            <Tab label="Naur" />
+          </Tabs>
+        </Box>
+      </Box>
+      <TabContent value={value} index={0}>
+        <CharacterSheet character={naur} />
+      </TabContent>
+    </>
   )
 }
 

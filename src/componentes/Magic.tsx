@@ -4,7 +4,7 @@ import { MagicLevel } from "../interfaces/MagicLevel";
 import BorderBox from "./BorderBox";
 import MagicStats from "./MagicStats";
 import Spells from "./Spells";
-import SpellTabPanel from "./SpellTabPanel";
+import TabContent from "./TabContent";
 
 
 
@@ -28,16 +28,16 @@ const Magic = ({ caracteristic, attack, saving, levels }: MagicProps) => {
                 <MagicStats caracteristic={caracteristic} attack={attack} saving={saving} />
                 <Box sx={{ width: '100%' }}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                        <Tabs value={value} onChange={handleChange} aria-label="basic tabs spells">
+                        <Tabs variant="scrollable" value={value} onChange={handleChange} aria-label="basic tabs spells">
                             {levels.map((level) => (
                                 <Tab key={level.name} label={level.name} id={`spell-tab-${level.name}`} aria-controls={`spell-tabpanel-${level.name}`} />
                             ))}
                         </Tabs>
                     </Box>
                     {levels.map((level, index) => (
-                        <SpellTabPanel key={level.name} value={value} index={index}>
+                        <TabContent key={level.name} value={value} index={index}>
                             <Spells quantity={level.slots} spells={level.spells} />
-                        </SpellTabPanel>
+                        </TabContent>
                     ))}
                 </Box>
 
