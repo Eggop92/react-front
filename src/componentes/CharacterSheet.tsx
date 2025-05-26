@@ -15,7 +15,7 @@ interface CharacterSheetProps {
 const CharacterSheet = ({ character }: CharacterSheetProps) => {
     return (
         <Stack>
-            <Header name={character.name} clase={character.clase} race={character.race} level={character.level} />
+            <Header name={character.name} clase={character.clase} race={character.race} level={character.level} imageProfile={character.imageProfile} />
             <Grid container direction='row' spacing={2} sx={{ justifyContent: 'space-between' }} columns={12}>
                 <Grid sx={{ alignItems: 'center', justifyContent: "center", }} size={5}>
                     <CaracteristicsList caracteristics={character.caracteristics} proficencyBonus={character.proficencyBonus} proficencies={character.proficencies} />

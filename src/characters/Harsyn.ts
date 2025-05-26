@@ -6,6 +6,7 @@ export const harsyn: Character = {
     race: "Gnasi de aire",
     background: "Erudito",
     level: 6,
+    imageProfile: '../public/harsyn.jpg',
     caracteristics: [
         { id: 1, value: 10 },
         { id: 2, value: 14 },

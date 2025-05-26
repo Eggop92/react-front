@@ -6,15 +6,16 @@ interface HeaderProps {
     name: string;
     clase: string;
     race: string;
-    level: number
+    level: number;
+    imageProfile?: string;
 }
 
-const Header = ({ name, clase, race, level }: HeaderProps) => {
+const Header = ({ name, clase, race, level, imageProfile }: HeaderProps) => {
 
     return (
         <Stack paddingBottom={2} >
             <Stack direction="row" spacing={2} sx={{ alignItems: 'center' }}>
-                <Avatar {...stringAvatar(name)} />
+                {imageProfile ? <Avatar src={imageProfile} alt={name} /> : <Avatar {...stringAvatar(name)} />}
                 <Typography variant="h4" noWrap>{name}</Typography>
                 <ClaseChip clase={clase} level={level} />
                 <RaceChip race={race} />

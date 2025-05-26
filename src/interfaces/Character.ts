@@ -26,4 +26,5 @@ export interface Character {
     magicCaracteristic: string;
     magicAttackBonus: number;
     magicSaveDC: number;
+    imageProfile?: string;
 }
