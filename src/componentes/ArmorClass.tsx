@@ -7,7 +7,7 @@ interface ArmorClassProps {
 
 const ArmorClass = ({ armorClass }: ArmorClassProps) => {
     return (
-        <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }} >
+        <Stack direction="row" spacing={1} sx={{ justifyContent: "center", alignItems: 'center' }} >
             <GiAmericanShield size='1.5rem' />
             <Typography variant="h5">{armorClass}</Typography>
         </Stack>

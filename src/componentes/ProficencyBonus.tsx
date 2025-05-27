@@ -7,7 +7,7 @@ interface ProficencyBonusProps {
 
 const ProficencyBonus = ({ proficency }: ProficencyBonusProps) => {
     return (
-        <Stack direction="row" spacing={1} sx={{ justifyContent: "center" }} >
+        <Stack direction="row" spacing={1} sx={{ justifyContent: "center", alignItems: 'center' }} >
             <GiSkills size='1.5rem' />
             <Typography variant="h5">{proficency}</Typography>
         </Stack>

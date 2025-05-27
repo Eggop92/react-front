@@ -1,4 +1,5 @@
 import { Avatar, Stack, styled, Tooltip, tooltipClasses, TooltipProps, Typography } from "@mui/material";
+import BackgroundChip from "./BackgroundChip";
 import ClaseChip from "./ClaseChip";
 import RaceChip from "./RaceChip";
 
@@ -8,9 +9,10 @@ interface HeaderProps {
     race: string;
     level: number;
     imageProfile?: string;
+    background: string;
 }
 
-const Header = ({ name, clase, race, level, imageProfile }: HeaderProps) => {
+const Header = ({ name, clase, race, level, imageProfile, background }: HeaderProps) => {
     const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
         <Tooltip {...props} classes={{ popper: className }} />
     ))(() => ({
@@ -31,6 +33,7 @@ const Header = ({ name, clase, race, level, imageProfile }: HeaderProps) => {
                 <Typography variant="h4" noWrap>{name}</Typography>
                 <ClaseChip clase={clase} level={level} />
                 <RaceChip race={race} />
+                <BackgroundChip background={background} />
             </Stack>
         </Stack>
 

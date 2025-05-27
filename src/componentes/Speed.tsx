@@ -21,7 +21,7 @@ const Speed = ({ speed, speedType }: SpeedProps) => {
         }
     };
     return (
-        <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }} >
+        <Stack direction="row" spacing={1} sx={{ justifyContent: "center", alignItems: 'center' }} >
             {getSpeedIcon()}
             <Typography variant="h5">{speed}</Typography>
         </Stack>

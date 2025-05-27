@@ -6,7 +6,7 @@ import { PiSkullBold } from 'react-icons/pi'
 
 const DeathSaves = () => {
     return (
-        <>
+        <Stack direction="column" spacing={0} sx={{ justifyContent: "center", alignItems: 'center' }} >
             <Stack direction='row' spacing={0} sx={{ alignItems: 'center' }}>
                 <Checkbox icon={<FaRegHeart color={'white'} />} checkedIcon={<FaHeartPulse />} color="success" size='small' />
                 <Checkbox icon={<FaRegHeart color={'white'} />} checkedIcon={<FaHeartPulse />} color="success" size='small' />
@@ -17,7 +17,7 @@ const DeathSaves = () => {
                 <Checkbox icon={<PiSkullBold color={'white'} />} checkedIcon={<GiChewedSkull />} color="error" size='small' />
                 <Checkbox icon={<PiSkullBold color={'white'} />} checkedIcon={<GiChewedSkull />} color="error" size='small' />
             </Stack>
-        </>
+        </Stack>
     )
 }
 
