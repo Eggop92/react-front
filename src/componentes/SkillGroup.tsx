@@ -15,7 +15,7 @@ const SkillGroup = ({ name, modifier, direction, typographyVariant = 'body2', ic
     const { enqueueSnackbar } = useSnackbar();
 
     const handleClick = () => {
-        enqueueSnackbar({ variant: 'skillCheckSnackbar', modifier: modifier, skill: name, icon: icon });
+        enqueueSnackbar({ variant: 'skillCheckSnackbar', modifier: modifier, skill: name, icon: icon, dice: 20, ammount: 1 });
     };
 
     return (
