@@ -47,10 +47,10 @@ const AttackBox = ({ attack }: AttackBoxProps) => {
 
     const { enqueueSnackbar } = useSnackbar();
     const handleAttackClick = () => {
-        enqueueSnackbar({ variant: 'skillCheckSnackbar', modifier: attack.attackModifier, skill: "Attack", icon: <GiPointySword /> });
+        enqueueSnackbar({ variant: 'skillCheckSnackbar', modifier: attack.attackModifier || 0, skill: "Attack", icon: <GiPointySword />, dice: 20, ammount: 1 });
     };
     const handleDamageClick = () => {
-        enqueueSnackbar({ variant: 'skillCheckSnackbar', modifier: attack.damageModifier, skill: attack.typeDamage + " damage", icon: getDamageIcon(), dice: attack.typeDiceDamage, ammount: attack.numberDiceDamage });
+        enqueueSnackbar({ variant: 'skillCheckSnackbar', modifier: attack.damageModifier, skill: attack.typeDamage + " damage", icon: getDamageIcon(), dice: attack.typeDiceDamage || 20, ammount: attack.numberDiceDamage || 1 });
     };
     const getAttackButton = (): ReactNode => {
         if (attack.attackModifier === undefined) return null;

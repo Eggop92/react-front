@@ -18,7 +18,7 @@ export interface Character {
     armourClass: number;
     initiativeBonus: number;
     speed: number;
-    speedType: string;
+    speedType: "walking" | "flying" | "swimming";
     maxHitPoints: number;
     goldCoins: number;
     silverCoins: number;

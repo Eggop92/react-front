@@ -10,7 +10,7 @@ interface SkillCheckSnackbarProps extends CustomContentProps {
     ammount: number;
 }
 
-const SkillCheckSnackbar = forwardRef<HTMLDivElement, SkillCheckSnackbarProps>(({ id, modifier, skill, icon, dice = 20, ammount = 1 }, ref) => {
+const SkillCheckSnackbar = forwardRef<HTMLDivElement, SkillCheckSnackbarProps>(({ modifier, skill, icon, dice = 20, ammount = 1 }, ref) => {
     const rolls: number[] = [];
     let totalRolls = 0;
     [...Array(ammount).keys()].forEach(() => {

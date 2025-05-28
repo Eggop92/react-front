@@ -2,7 +2,7 @@ import { Character } from "../interfaces/Character";
 
 export const harsyn: Character = {
     name: "Harsyn Skye",
-    clase: "Mago",
+    clase: "Mago de la escuela de magia de guerra",
     race: "Gnasi de aire",
     background: "Erudito",
     level: 6,

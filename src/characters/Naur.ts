@@ -2,7 +2,7 @@ import { Character } from "../interfaces/Character";
 
 export const naur: Character = {
     name: "Narv Naur",
-    clase: "Druida",
+    clase: "Druida del circulo del fuego salvaje",
     race: "Tiefling",
     background: "Vagabundo",
     level: 9,
