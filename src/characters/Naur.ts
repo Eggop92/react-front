@@ -6,7 +6,7 @@ export const naur: Character = {
     race: "Tiefling",
     background: "Vagabundo",
     level: 9,
-    imageProfile: '../public/naur.jpg',
+    imageProfile: 'naur.jpg',
     caracteristics: [
         { id: 1, value: 10 },
         { id: 2, value: 16 },
