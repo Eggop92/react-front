@@ -16,7 +16,7 @@ interface CharacterSheetProps {
 const CharacterSheet = ({ characterName }: CharacterSheetProps) => {
     const { isPending, isError, data, error } = useQuery<Character>({
         queryKey: [characterName], queryFn: async () => {
-            return fetch(`/characters/${characterName}.json`, { "headers": { 'Content-Type': 'application/json' } })
+            return fetch(`http://localhost:8080/characters/${characterName}`, { "headers": { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*" } })
                 .then(res => res.json())
                 .then(data => data as Character);
         }
