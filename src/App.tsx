@@ -3,8 +3,6 @@ import { Box, Tab, Tabs, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import React, { ReactNode, useState } from 'react';
 import './App.css';
-import { harsyn } from './characters/Harsyn';
-import { naur } from './characters/Naur';
 import CharacterSheet from './componentes/CharacterSheet';
 import RollBox from './componentes/RollBox';
 import RollsDrawer from './componentes/RollsDrawer';
@@ -12,7 +10,7 @@ import SpeedButton from './componentes/SpeedButton';
 import TabContent from './componentes/TabContent';
 
 function App() {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState<number>(0);
   const [open, setOpen] = useState(false);
   const [rollsHistory, setRollsHistory] = useState<ReactNode[]>([]);
   const { enqueueSnackbar } = useSnackbar();
@@ -20,6 +18,10 @@ function App() {
   const toggleDrawer = (newOpen: boolean) => {
     setOpen(newOpen);
   };
+  const characters = [
+    'Harsyn',
+    'Naur'
+  ]
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -59,18 +61,17 @@ function App() {
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs characters">
-            <Tab label="Naur" />
-            <Tab label="Harsyn" />
+            {characters.map((character, index) => (
+              <Tab label={character} key={index} />
+            ))}
           </Tabs>
         </Box>
       </Box>
-
-      <TabContent value={value} index={0}>
-        <CharacterSheet character={naur} makeRoll={makeRoll} />
-      </TabContent>
-      <TabContent value={value} index={1}>
-        <CharacterSheet character={harsyn} makeRoll={makeRoll} />
-      </TabContent>
+      {characters.map((character, index) => (
+        <TabContent value={value} index={index} key={index}>
+          <CharacterSheet characterName={character} makeRoll={makeRoll} />
+        </TabContent>
+      ))}
     </>
   )
 }

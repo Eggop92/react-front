@@ -1,4 +1,5 @@
 import { Grid, Stack } from '@mui/material'
+import { useQuery } from '@tanstack/react-query'
 import { ReactNode } from 'react'
 import { Character } from '../interfaces/Character'
 import AtacksList from './AttacksList'
@@ -10,28 +11,39 @@ import Magic from './Magic'
 import Money from './Money'
 
 interface CharacterSheetProps {
-    character: Character;
+    characterName: string;
     makeRoll: (modifier: number, skill: string, icon: ReactNode, dice: number, ammount: number) => void;
 }
 
-const CharacterSheet = ({ character, makeRoll }: CharacterSheetProps) => {
+const CharacterSheet = ({ characterName, makeRoll }: CharacterSheetProps) => {
+    const { isPending, isError, data, error } = useQuery<Character>({
+        queryKey: [characterName], queryFn: async () => {
+            return fetch(`/characters/${characterName}.json`, { "headers": { 'Content-Type': 'application/json' } })
+                .then(res => res.json())
+                .then(data => data as Character);
+        }
+    })
+
+    if (isPending) return <div>Loading...</div>
+    if (isError) return <div>Error: {error.message}</div>
+
     return (
         <Stack>
-            <Header name={character.name} clase={character.clase} race={character.race} level={character.level} imageProfile={character.imageProfile} background={character.background} />
+            <Header name={data.name} clase={data.clase} race={data.race} level={data.level} imageProfile={data.imageProfile} background={data.background} />
             <Grid container direction='row' spacing={2} sx={{ justifyContent: 'space-between' }} columns={12}>
                 <Grid sx={{ alignItems: 'center', justifyContent: "center", }} size={{ xs: 12, xl: 4 }}>
-                    <CaracteristicsList caracteristics={character.caracteristics} proficencyBonus={character.proficencyBonus} proficencies={character.proficencies} makeRoll={makeRoll} />
+                    <CaracteristicsList caracteristics={data.caracteristics} proficencyBonus={data.proficencyBonus} proficencies={data.proficencies} makeRoll={makeRoll} />
                 </Grid>
                 <Grid sx={{ alignItems: 'center', justifyContent: "center", }} size={{ xs: 12, xl: 4 }}>
                     <Stack spacing={1}>
-                        <CombatStats armorClass={character.armourClass} initiativeBonus={character.initiativeBonus} proficency={character.proficencyBonus} speed={character.speed} speedType={character.speedType} maxHitPoints={character.maxHitPoints} makeRoll={makeRoll} />
-                        <Money gold={character.goldCoins} silver={character.silverCoins} bronze={character.copperCoins} />
-                        <AtacksList list={character.attacks} makeRoll={makeRoll} />
-                        <Magic caracteristic={character.magicCaracteristic} attack={character.magicAttackBonus} saving={character.magicSaveDC} levels={character.magicLevels} makeRoll={makeRoll} />
+                        <CombatStats armorClass={data.armourClass} initiativeBonus={data.initiativeBonus} proficency={data.proficencyBonus} speed={data.speed} speedType={data.speedType} maxHitPoints={data.maxHitPoints} makeRoll={makeRoll} />
+                        <Money gold={data.goldCoins} silver={data.silverCoins} bronze={data.copperCoins} />
+                        <AtacksList list={data.attacks} makeRoll={makeRoll} />
+                        <Magic caracteristic={data.magicCaracteristic} attack={data.magicAttackBonus} saving={data.magicSaveDC} levels={data.magicLevels} makeRoll={makeRoll} />
                     </Stack>
                 </Grid>
                 <Grid sx={{ alignItems: 'center', justifyContent: "center", }} size={{ xs: 12, xl: 4 }}>
-                    <FeatList feats={character.feats} />
+                    <FeatList feats={data.feats} />
                 </Grid>
             </Grid>
         </Stack>
