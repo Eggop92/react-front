@@ -1,20 +1,15 @@
-import { Button } from "@mui/material"
-import { useSnackbar } from "notistack"
-import { TbSortDescending2Filled } from "react-icons/tb"
+import { Button } from "@mui/material";
+import { ReactNode } from "react";
+import { TbSortDescending2Filled } from "react-icons/tb";
 
 interface InitiativeProps {
     initiativeBonus: number
+    makeRoll: (modifier: number, skill: string, icon: ReactNode, dice: number, ammount: number) => void;
 }
 
-const Initiative = ({ initiativeBonus }: InitiativeProps) => {
-    const { enqueueSnackbar } = useSnackbar();
-
-    const handleClick = () => {
-        enqueueSnackbar({ variant: 'skillCheckSnackbar', modifier: initiativeBonus, skill: "iniciativa", icon: < TbSortDescending2Filled />, dice: 20, ammount: 1 });
-    };
-
+const Initiative = ({ initiativeBonus, makeRoll }: InitiativeProps) => {
     return (
-        <Button variant="outlined" color="primary" onClick={handleClick} startIcon={<TbSortDescending2Filled />}>
+        <Button variant="outlined" color="primary" onClick={() => makeRoll(initiativeBonus, "iniciativa", <TbSortDescending2Filled />, 20, 1)} startIcon={<TbSortDescending2Filled />}>
             {initiativeBonus}
         </Button>
 

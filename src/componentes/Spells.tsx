@@ -1,5 +1,6 @@
 import { Checkbox, List, Stack } from "@mui/material";
 import { purple, red } from "@mui/material/colors";
+import { ReactNode } from "react";
 import { GiCrossMark, GiStarSwirl } from "react-icons/gi";
 import { Attack } from "../interfaces/Attack";
 import AttackBox from "./AttackBox";
@@ -7,9 +8,10 @@ import AttackBox from "./AttackBox";
 interface SpellsProps {
     quantity: number;
     spells?: Attack[];
+    makeRoll: (modifier: number, skill: string, icon: ReactNode, dice: number, ammount: number) => void;
 }
 
-const Spells = ({ quantity, spells }: SpellsProps) => {
+const Spells = ({ quantity, spells, makeRoll }: SpellsProps) => {
     return (
         <>
             <Stack direction='row' sx={{ justifyContent: "flex-end", alignItems: "center" }}>
@@ -19,7 +21,7 @@ const Spells = ({ quantity, spells }: SpellsProps) => {
             </Stack>
             <List sx={{ padding: 0 }}>
                 {spells?.map((attack, index) => (
-                    <AttackBox key={index} attack={attack} />
+                    <AttackBox key={index} attack={attack} makeRoll={makeRoll} />
                 ))}
 
             </List>

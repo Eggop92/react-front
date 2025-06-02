@@ -1,5 +1,5 @@
 import { Box, Stack, Tab, Tabs } from "@mui/material";
-import React from "react";
+import { ReactNode, SyntheticEvent, useState } from "react";
 import { MagicLevel } from "../interfaces/MagicLevel";
 import BorderBox from "./BorderBox";
 import MagicStats from "./MagicStats";
@@ -12,13 +12,14 @@ interface MagicProps {
     caracteristic: string;
     attack: number;
     saving: number;
-    levels: MagicLevel[]
+    levels: MagicLevel[];
+    makeRoll: (modifier: number, skill: string, icon: ReactNode, dice: number, ammount: number) => void;
 }
 
-const Magic = ({ caracteristic, attack, saving, levels }: MagicProps) => {
-    const [value, setValue] = React.useState(0);
+const Magic = ({ caracteristic, attack, saving, levels, makeRoll }: MagicProps) => {
+    const [value, setValue] = useState(0);
 
-    const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
+    const handleChange = (_event: SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
 
@@ -36,7 +37,7 @@ const Magic = ({ caracteristic, attack, saving, levels }: MagicProps) => {
                     </Box>
                     {levels.map((level, index) => (
                         <TabContent key={level.name} value={value} index={index}>
-                            <Spells quantity={level.slots} spells={level.spells} />
+                            <Spells quantity={level.slots} spells={level.spells} makeRoll={makeRoll} />
                         </TabContent>
                     ))}
                 </Box>

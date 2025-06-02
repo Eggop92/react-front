@@ -1,5 +1,4 @@
 import { Button, ListItem, ListItemIcon, Stack, Tooltip, Typography } from "@mui/material";
-import { useSnackbar } from "notistack";
 import { ReactNode } from "react";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { GiArrowhead, GiBrainstorm, GiChemicalBolt, GiCrossedSlashes, GiDivert, GiDrippingKnife, GiFireTail, GiHealing, GiIceSpear, GiLightningBranches, GiPointySword, GiSkullCrack, GiThorHammer, GiWingedSword } from "react-icons/gi";
@@ -7,9 +6,10 @@ import { Attack } from "../interfaces/Attack";
 
 interface AttackBoxProps {
     attack: Attack;
+    makeRoll: (modifier: number, skill: string, icon: ReactNode, dice: number, ammount: number) => void;
 }
 
-const AttackBox = ({ attack }: AttackBoxProps) => {
+const AttackBox = ({ attack, makeRoll }: AttackBoxProps) => {
     const getDamageIcon = (): ReactNode => {
         switch (attack.typeDamage) {
             case 'slashing':
@@ -45,12 +45,13 @@ const AttackBox = ({ attack }: AttackBoxProps) => {
         }
     }
 
-    const { enqueueSnackbar } = useSnackbar();
     const handleAttackClick = () => {
-        enqueueSnackbar({ variant: 'skillCheckSnackbar', modifier: attack.attackModifier || 0, skill: "Attack", icon: <GiPointySword />, dice: 20, ammount: 1 });
+        console.log("Attack clicked", attack);
+        makeRoll(attack.attackModifier || 0, "Attack", <GiPointySword />, 20, 1);
     };
     const handleDamageClick = () => {
-        enqueueSnackbar({ variant: 'skillCheckSnackbar', modifier: attack.damageModifier, skill: attack.typeDamage + " damage", icon: getDamageIcon(), dice: attack.typeDiceDamage || 20, ammount: attack.numberDiceDamage || 1 });
+        console.log("Damage clicked", attack);
+        makeRoll(attack.damageModifier || 0, attack.typeDamage + " damage", getDamageIcon(), attack.typeDiceDamage || 20, attack.numberDiceDamage || 1);
     };
     const getAttackButton = (): ReactNode => {
         if (attack.attackModifier === undefined) return null;

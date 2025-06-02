@@ -1,13 +1,15 @@
 import { List } from "@mui/material";
+import { ReactNode } from "react";
 import { Attack } from "../interfaces/Attack";
 import AttackBox from "./AttackBox";
 import BorderBox from "./BorderBox";
 
 interface AttackListProps {
   list: Attack[];
+  makeRoll: (modifier: number, skill: string, icon: ReactNode, dice: number, ammount: number) => void;
 }
 
-const AtacksList = ({ list }: AttackListProps) => {
+const AtacksList = ({ list, makeRoll }: AttackListProps) => {
 
   // name: string;
   // attackModifier: number;
@@ -20,7 +22,7 @@ const AtacksList = ({ list }: AttackListProps) => {
     <BorderBox title="Ataques">
       <List className="border">
         {list.map((attack, index) => (
-          <AttackBox key={index} attack={attack} />
+          <AttackBox key={index} attack={attack} makeRoll={makeRoll} />
         ))}
       </List>
     </BorderBox>

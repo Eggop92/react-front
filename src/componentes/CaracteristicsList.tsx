@@ -1,4 +1,5 @@
 import { Grid } from "@mui/material"
+import { ReactNode } from "react"
 import { FaHeartbeat } from "react-icons/fa"
 import { GiBiceps, GiPublicSpeaker, GiSolidLeaf, GiSpellBook, GiWalkingBoot } from "react-icons/gi"
 import { Caracteristic } from "../interfaces/Caracteristic"
@@ -9,10 +10,11 @@ import SkillGroup from "./SkillGroup"
 interface Props {
     caracteristics: Caracteristic[],
     proficencyBonus: number,
-    proficencies: number[]
+    proficencies: number[],
+    makeRoll: (modifier: number, skill: string, icon: ReactNode, dice: number, ammount: number) => void;
 }
 
-const CaracteristicsList = ({ caracteristics, proficencyBonus, proficencies }: Props) => {
+const CaracteristicsList = ({ caracteristics, proficencyBonus, proficencies, makeRoll }: Props) => {
     const caracteristiclist = [
         { id: 1, name: 'Fuerza', skills: [{ id: 1, name: 'Salvación' }, { id: 2, name: 'Atletismo' }], icon: <GiBiceps /> },
         { id: 2, name: 'Destreza', skills: [{ id: 3, name: 'Salvación' }, { id: 4, name: 'Acrobacias' }, { id: 5, name: 'Sigilo' }, { id: 6, name: 'Juego de manos' }], icon: <GiWalkingBoot /> },
@@ -51,13 +53,13 @@ const CaracteristicsList = ({ caracteristics, proficencyBonus, proficencies }: P
                     <Grid size={12} direction='row' sx={{ alignItems: 'center' }} padding={1} className='border'>
                         <Grid container columns={12}>
                             <Grid size={3} sx={{ alignItems: 'center', justifyContent: "center", }}>
-                                <SkillGroup name={'' + getCaracteristicValue(caracteristic.id)} modifier={getModifier(getCaracteristicValue(caracteristic.id))} direction='column-reverse' typographyVariant='h6' icon={caracteristic.icon} />
+                                <SkillGroup name={caracteristic.name} superName={'' + getCaracteristicValue(caracteristic.id)} modifier={getModifier(getCaracteristicValue(caracteristic.id))} direction='column-reverse' typographyVariant='h6' icon={caracteristic.icon} makeRoll={makeRoll} />
                             </Grid>
                             <Grid size={9}>
                                 <Grid container direction='row' spacing={1} paddingLeft={1} columns={12} sx={{ alignItems: 'center' }} >
                                     {caracteristic.skills.map((skill) => (
                                         <Grid size={6} key={skill.id}>
-                                            <SkillGroup name={skill.name} modifier={getSkillModifier(caracteristic.id, skill.id)} proficency={proficencies.includes(skill.id)} direction='row' icon={caracteristic.icon} />
+                                            <SkillGroup name={skill.name} modifier={getSkillModifier(caracteristic.id, skill.id)} proficency={proficencies.includes(skill.id)} direction='row' icon={caracteristic.icon} makeRoll={makeRoll} />
                                         </Grid>
                                     ))}
                                 </Grid>
